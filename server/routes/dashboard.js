@@ -7,7 +7,7 @@ const privacyMsg = "This todo is not yours";
 router.get("/", authorize, async (req, res) => {
     try {
         const user = await db.query(
-            "SELECT users.user_firstname, users.user_lastname, users.user_id, users.created_at, todos.created_at, todos.todo_id, todos.description, todos.completed FROM users LEFT JOIN todos ON users.user_id = todos.user_id WHERE users.user_id = $1",
+            "SELECT users.user_firstname, users.user_lastname, users.user_id, users.created_at, todos.created_at, todos.todo_id, todos.description, todos.completed FROM users LEFT JOIN todos ON users.user_id = todos.user_id WHERE users.user_id = $1 ORDER BY todos.created_at DESC",
             [req.user.id]
         );
         res.json(user.rows);

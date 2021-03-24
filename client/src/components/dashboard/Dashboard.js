@@ -38,11 +38,7 @@ const Dashboard = ({ setAuth }) => {
         }
       );
       const parseResponse = await response.json();
-      console.log("parseResponse in toggleComplete", parseResponse);
-
-      console.log("todos in toggleComplete", allTodos);
-
-      console.log("allTodos", allTodos);
+      console.log("parseResponse", parseResponse);
       setTodosChange(true);
     } catch (err) {
       console.error(err.message);
@@ -56,6 +52,7 @@ const Dashboard = ({ setAuth }) => {
         headers: { jwt_token: localStorage.token }
       });
       const parseData = await res.json();
+      // console.log("parseData > getProfile", parseData);
       setAllTodos(parseData);
       if (parseData[0].user_firstname)
         setFirstname(parseData[0].user_firstname);

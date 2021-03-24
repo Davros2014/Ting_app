@@ -7,7 +7,6 @@ import Checkbox from "@material-ui/core/Checkbox";
 //listing todos
 const ListTodos = ({ allTodos, setTodosChange, toggleComplete }) => {
   const [todos, setTodos] = useState([]);
-  const [completed, setCompleted] = useState();
 
   //deleting todos
   const deleteTodo = async id => {
@@ -61,8 +60,7 @@ const ListTodos = ({ allTodos, setTodosChange, toggleComplete }) => {
   };
 
   const toggleCompletion = (id, completed) => {
-    setCompleted();
-    console.log("id, completed - in toggleCompletion", id, completed);
+    // console.log("id, completed - in toggleCompletion", id, completed);
     toggleComplete(id, completed);
   };
 

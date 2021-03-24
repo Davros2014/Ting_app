@@ -63,7 +63,6 @@ const EditTodo = ({ todo, setTodosChange }) => {
                 &times;
               </button>
             </div>
-
             <div className="modal-body">
               <input
                 value={description}
@@ -72,15 +71,15 @@ const EditTodo = ({ todo, setTodosChange }) => {
                 className="todoForm__input form-control"
                 onChange={e => setDescription(e.target.value)}
               />
-              <button
-                type="button"
-                data-dismiss="modal"
-                onClick={e => handleUpdate(e)}
-                className="todoForm__btn mainButton"
-              >
-                Update
-              </button>
               <div className="modal-footer">
+                <button
+                  type="button"
+                  data-dismiss="modal"
+                  onClick={e => handleUpdate(e)}
+                  className="todoForm__btn mainButton"
+                >
+                  Update
+                </button>
                 <button
                   type="button"
                   className="mainButton"

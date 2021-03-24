@@ -13,6 +13,30 @@ code {
     monospace;
 }
 
+// forms inputs etc
+*:focus {
+  outline: none;
+}
+button:focus {
+  outline: 0;
+}
+form {
+  text-align: center;
+  margin: auto;
+}
+
+input:focus,
+textarea:focus {
+  border: none;
+  color: $primaryColor;
+  outline: none;
+}
+
+button {
+  outline: 0;
+  border: 0;
+}
+
 *,
 html {
   text-decoration: none;
@@ -61,5 +85,20 @@ html {
   }
 }
 .introContainer {
-  background: blue;
+  padding: 1rem;
+  & h2 {
+    font-weight: 700;
+    letter-spacing: 0.25s;
+  }
+  & a {
+    margin: 0 0.5rem;
+    text-decoration: none;
+  }
+}
+
+.Toastify__toast--success {
+  background: $primaryColor !important;
+  color: $secondaryColor !important;
+  border-radius: $bigRadius;
+  padding-left: 2rem;
 }

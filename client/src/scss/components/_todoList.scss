@@ -127,7 +127,7 @@ html:focus {
       background: lighten($secondaryColor, 45%);
       display: flex;
       justify-content: space-between;
-      padding: 1rem;
+      padding: 0.5rem 1rem 0.25rem 1rem;
       display: flex;
       width: 100%;
       border-radius: $bigRadius;
@@ -162,12 +162,12 @@ html:focus {
         font-size: 1rem;
         border-bottom: 1px solid $secondaryColor;
         padding-bottom: 0.5rem;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.25rem;
         font-weight: 700;
       }
     }
     &__infoContainer {
-      padding: 0 0 0 1rem;
+      padding: 0 0 0 0;
       display: flex;
       // background: blue;
       justify-content: space-between;
@@ -275,6 +275,18 @@ form {
   border: 3px solid red;
   z-index: 1;
 }
-// .modal-backdrop.show {
-//   z-index: -1;
-// }
+.modal-backdrop.show {
+  z-index: 1001;
+}
+.modal-dialog {
+  z-index: 1000;
+}
+.modal.modalOutline.show {
+  z-index: 1000;
+  background: blue;
+  margin-top: 20vh;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

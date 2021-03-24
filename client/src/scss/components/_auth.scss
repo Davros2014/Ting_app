@@ -9,6 +9,11 @@
     padding: 2rem 3rem;
     border-radius: $bigRadius;
     background: $secondaryColor;
+    background: linear-gradient(
+      to top,
+      $secondaryColor,
+      lighten($primaryColor, 1%)
+    );
     box-shadow: $box-shadow;
     color: $mainWhite;
     width: 90vw;
@@ -18,8 +23,10 @@
     @include minMq("1200px") {
       width: 30vw;
     }
-    & h2 {
+    & h5 {
       font-size: 1.25rem;
+      font-weight: 700;
+      color: $secondaryColor;
     }
     & input {
       color: $secondaryColor;
