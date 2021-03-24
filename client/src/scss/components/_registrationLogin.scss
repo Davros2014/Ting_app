@@ -1,0 +1,91 @@
+////////////////////////////////////////////
+// REGISTRATION PAGE ///////////////////////
+////////////////////////////////////////////
+
+.loginRegContainer {
+  display: flex;
+  flex-direction: column;
+  grid-column: 3 /-3;
+  &__Logo {
+    @include flexbox();
+    @include push--auto;
+    @include justify-content(center);
+    @include flex-direction(column);
+    text-align: center;
+    padding: calc(1rem + 1vw);
+  }
+  &__Logo &__Header {
+    color: rgba($complimentary-color, 0.5);
+    font-size: 1.35rem;
+    letter-spacing: 1.2;
+    text-transform: capitalize;
+  }
+  &__RegLoginWrapper {
+    background: rgba(red, 0.15);
+    background: white;
+    // box-shadow: $boxShadowMain;
+    border-radius: 8px;
+    padding: 2rem 0;
+    min-width: 80vw;
+    max-width: 50vw;
+    animation-name: fadeInbounceIn;
+    animation-duration: 0.35s;
+    animation-fill-mode: forwards;
+    @include flexbox();
+    @include flex-direction(column);
+    @include justify-content(center);
+  }
+  &__registrationForm {
+    @include flexbox();
+    @include flex-direction(column);
+    @include align-items(center);
+    margin: auto;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    @include BodyText;
+    input:focus {
+      background: $spice1;
+      color: white;
+      font-weight: 700;
+    }
+    input:focus::placeholder {
+      color: $mainWhite;
+    }
+  }
+  &__MemberText {
+    color: rgba(76, 76, 76, 0.5);
+    font-size: 1.35rem;
+    letter-spacing: 1.2;
+    text-transform: capitalize;
+    margin-top: 2rem;
+    span {
+      text-transform: lowercase;
+      font-size: 1.35rem;
+      color: rgba(76, 76, 76, 0.25);
+      transition: 0.25s color ease-in-out;
+      &:hover {
+        transition: 0.25s color ease-in-out;
+        color: $spice1;
+      }
+    }
+  }
+}
+@keyframes fadeInbounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media all and (min-width: 768px) {
+  .loginRegContainer {
+    &__RegLoginWrapper {
+      min-width: 40vw;
+    }
+  }
+}

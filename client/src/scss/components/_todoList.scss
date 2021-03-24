@@ -1,0 +1,280 @@
+// todoList
+
+*:focus,
+html:focus {
+  outline: none;
+}
+.noTodosImage {
+  width: 50vw;
+  // height: 50vh;
+  // background: red;
+}
+
+.todoWrapper {
+  position: relative;
+  margin: 0 auto;
+  width: 100vw;
+  background: blue;
+  border: 3px solid blue;
+}
+
+// main component
+.todoListContainer {
+  position: absolute;
+  top: 0;
+  margin-top: 20vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  z-index: -1;
+  width: 90vw;
+  height: 100%;
+  @include minMq("900px") {
+    width: 70vw;
+  }
+  @include minMq("1200px") {
+    width: 30vw;
+  }
+  &__form {
+    position: fixed;
+    top: 6vh;
+    width: 100%;
+    padding: 1.5rem 5vw;
+    z-index: 0;
+
+    @include minMq("900px") {
+      padding: 1.5rem 2rem;
+    }
+    background: rgba(50, 25, 50, 0.5);
+    // border-radius: $bigRadius;
+    // border-top-left-radius: $smallRadius;
+    // border-top-right-radius: $smallRadius;
+    margin: 0;
+    outline: none;
+    color: $secondaryColor;
+    & h5 {
+      font-size: 1.6rem;
+      color: $mainWhite;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+  }
+  &__todoFormField {
+    // background: red;
+    display: flex;
+    align-items: center;
+    width: 90vw;
+    @include minMq("900px") {
+      width: 70vw;
+    }
+    @include minMq("1200px") {
+      width: 30vw;
+    }
+    & input {
+      color: inherit;
+      border-radius: $smallRadius;
+      margin: 0;
+      margin-right: 1rem;
+      &::placeholder {
+        color: inherit;
+        font-weight: 700;
+        font-size: 0.8rem;
+      }
+    }
+    & button {
+      padding: 0.5rem clamp(1rem, 1rem, 3rem);
+    }
+  }
+  &__list {
+    position: relative;
+    width: 100%;
+    margin-top: 2rem;
+  }
+  & .todoList {
+    position: relative;
+    // padding: 1.6rem;
+    font-size: 0.85rem;
+    &__Item {
+      position: relative;
+      display: flex;
+      background: $secondaryColor;
+      background: $mainWhite;
+      padding: 2rem 0.75rem 0.75rem 0.75rem;
+      justify-content: space-between;
+      flex: 1;
+      margin-bottom: 2rem;
+      border-radius: $bigRadius * 2;
+      box-shadow: $box-shadow;
+      box-shadow: 0px 7px 11px 0px rgba($mainBlack, 0.3);
+      animation: 0.25s fadeIn forwards ease0in;
+    }
+    &__createdContainer {
+      position: absolute;
+      top: 0.75rem;
+      left: 1.75rem;
+      display: flex;
+      color: $secondaryColor;
+      & p {
+        font-size: 0.6rem;
+      }
+    }
+    &__Inner {
+      background: $backgroundWhite;
+      background: $backgroundWhite;
+      // background: lighten($secondaryColor, 0.1)
+      background: lighten($secondaryColor, 45%);
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem;
+      display: flex;
+      width: 100%;
+      border-radius: $bigRadius;
+      transition: 0.25s background ease-in-out;
+    }
+    &__Inner.completed {
+      transition: 0.25s background ease-in-out;
+      background: rgba($spice4, 0.1);
+    }
+    &__descriptionContainer {
+      display: flex;
+      text-align: left;
+      font-size: 0.75rem;
+      min-width: 100%;
+
+      & input {
+        max-width: 10vw;
+        text-align: left;
+      }
+      & p {
+        text-decoration: none;
+      }
+    }
+    &__textContainer {
+      min-width: 100%;
+      & p:first-child {
+        color: $secondaryColor;
+        padding: 0;
+        margin: 0;
+      }
+      & p:nth-child(2) {
+        font-size: 1rem;
+        border-bottom: 1px solid $secondaryColor;
+        padding-bottom: 0.5rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+      }
+    }
+    &__infoContainer {
+      padding: 0 0 0 1rem;
+      display: flex;
+      // background: blue;
+      justify-content: space-between;
+      align-items: center;
+    }
+    & .buttonContainer {
+      display: flex;
+    }
+    &__checkboxContainer {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
+
+form {
+  text-align: center;
+  margin: auto;
+}
+
+//animation
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-10%);
+  }
+}
+
+// version 2
+
+// checkboxes
+
+.todoList__checkBox {
+  position: absolute; // take it out of document flow
+  opacity: 0; // hide it
+  display: none;
+  & + label {
+    position: relative;
+    cursor: pointer;
+    padding: 0;
+  }
+  // Box.
+  & + label:before {
+    content: "";
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: text-top;
+    width: 20px;
+    height: 20px;
+    background: $darkGrey;
+    border-radius: 50px;
+    box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white,
+      4px -6px 0 white, 4px -8px 0 white;
+    transition: 0.25s background ease-in-out;
+  }
+  // Box hover
+  &:hover + label:before {
+    background: #f35429;
+  }
+  // Box focus
+  &:focus + label:before {
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+  }
+  // Box checked
+  &:checked + label:before {
+    background: #f35429;
+  }
+  // Disabled state label.
+  &:disabled + label {
+    color: #b8b8b8;
+    cursor: auto;
+  }
+  // Disabled box.
+  &:disabled + label:before {
+    box-shadow: none;
+    background: #ddd;
+  }
+  // Checkmark. Could be replaced with an image
+  &:checked + label:after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 9px;
+    background: white;
+    width: 2px;
+    height: 2px;
+    box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white,
+      4px -6px 0 white, 4px -8px 0 white;
+    transform: rotate(45deg);
+    transition: 0.25s all ease-in-out;
+  }
+}
+
+// toastify
+.toastify-this {
+  background: $secondaryColor;
+}
+
+.modalOutline {
+  border: 3px solid red;
+  z-index: 1;
+}
+// .modal-backdrop.show {
+//   z-index: -1;
+// }

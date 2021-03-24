@@ -1,0 +1,165 @@
+$boxShadowButtons: 0px 0px 4px rgba($complimentary-color, 0.5);
+
+.mainButton {
+  @include btnText;
+  @include transition(all, 0.2s, ease-out);
+  display: block;
+  outline: 0;
+  border: 0;
+  border: 1px solid rgba($complimentary-color, 0.15);
+  line-height: 1.2rem;
+  text-transform: uppercase;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  padding: 0.375rem 0.75rem;
+  background-color: $secondaryColor;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: center;
+
+  &:hover {
+    color: white;
+    background: rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+  }
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.submitButton {
+  @extend .mainButton;
+  border: none;
+  box-shadow: $boxShadowButtons;
+  color: $secondaryColor;
+  background: $mainWhite;
+  margin: 0 auto;
+  margin-top: 2rem;
+  @include transition(all, 0.2s, ease-out);
+  text-transform: uppercase;
+  // font-size: calc(0.5rem + 0.25vw);
+  text-align: center;
+  &:hover {
+    color: $light-accent-color;
+    background: rgba($thirdColor, 0.95);
+    color: white;
+  }
+}
+
+.iconButton {
+  @extend .mainButton;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 100%;
+  background: none;
+  color: $secondaryColor;
+  border: 1px solid $secondaryColor;
+  &:hover {
+    background: $secondaryColor;
+  }
+  & svg {
+    max-width: 1rem;
+  }
+}
+
+.disabled {
+  background: $light-grey-color;
+  &:hover {
+    background: $light-grey-color;
+    color: $light-grey-color;
+  }
+}
+
+// toggleSwitch
+.toggle-switch {
+  position: relative;
+  width: 75px;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  text-align: left;
+  &-checkbox {
+    display: none;
+  }
+  &-label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    border: 0 solid #bbb;
+    border-radius: 20px;
+    margin: 0;
+  }
+  &-inner {
+    display: block;
+    width: 200%;
+    margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+    &:before,
+    &:after {
+      display: block;
+      float: left;
+      width: 50%;
+      height: 34px;
+      padding: 0;
+      line-height: 34px;
+      font-size: 14px;
+      color: white;
+      font-weight: bold;
+      box-sizing: border-box;
+    }
+    &:before {
+      content: "Yes";
+      text-transform: uppercase;
+      padding-left: 10px;
+      background-color: #f90;
+      color: #fff;
+    }
+  }
+  &-disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+    &:before {
+      background-color: #ddd;
+      cursor: not-allowed;
+    }
+  }
+  &-inner:after {
+    content: "No";
+    text-transform: uppercase;
+    padding-right: 10px;
+    background-color: #bbb;
+    color: #fff;
+    text-align: right;
+  }
+  &-switch {
+    display: block;
+    width: 24px;
+    margin: 5px;
+    background: #fff;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 40px;
+    border: 0 solid #bbb;
+    border-radius: 20px;
+    transition: all 0.3s ease-in 0s;
+  }
+  &-checkbox:checked + &-label {
+    .toggle-switch-inner {
+      margin-left: 0;
+    }
+    .toggle-switch-switch {
+      right: 0px;
+    }
+  }
+}
