@@ -1,13 +1,15 @@
 import React from "react";
 
-const ToggleSwitch = () => {
+const ToggleSwitch = ({ id, checked, onChange }) => {
   return (
     <div className="toggle-switch">
       <input
         type="checkbox"
         className="toggle-switch-checkbox"
+        defaultChecked={checked}
         name="toggleSwitch"
-        id="toggleSwitch"
+        onChange={onChange}
+        id={id}
       />
       <label className="toggle-switch-label" htmlFor="toggleSwitch">
         <span className="toggle-switch-inner" />

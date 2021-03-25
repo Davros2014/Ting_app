@@ -266,6 +266,14 @@ form {
   }
 }
 
+// checkbox
+.checkBoxContainer {
+  transform: translateX(-12px);
+  & strong {
+    color: $secondaryColor;
+  }
+}
+
 // toastify
 .toastify-this {
   background: $secondaryColor;

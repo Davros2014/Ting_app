@@ -105,13 +105,20 @@ const ListTodos = ({ allTodos, setTodosChange, toggleComplete }) => {
                         {capitalise(todo.description)}
                       </p>
                       <div className="todoList__infoContainer">
-                        <Checkbox
-                          tabIndex={-1}
-                          checked={todo.completed}
-                          onClick={() =>
-                            toggleCompletion(todo.todo_id, todo.completed)
-                          }
-                        />
+                        <div className="checkBoxContainer">
+                          <Checkbox
+                            tabIndex={-1}
+                            checked={todo.completed}
+                            name="checkBox"
+                            onClick={() =>
+                              toggleCompletion(todo.todo_id, todo.completed)
+                            }
+                          />
+                          <label className="checkBoxlabel" htmlFor="checkBox">
+                            <strong>Status: </strong>
+                            {`${todo.completed ? "Completed" : "In progress"}`}
+                          </label>
+                        </div>
 
                         <div className="buttonContainer">
                           <EditTodo
@@ -130,8 +137,6 @@ const ListTodos = ({ allTodos, setTodosChange, toggleComplete }) => {
                     </div>
                   </div>
                 </div>
-
-                {index < todos.length - 1 && <hr />}
               </li>
             ))}
         </ul>
