@@ -6,8 +6,6 @@ html:focus {
 }
 .noTodosImage {
   width: 50vw;
-  // height: 50vh;
-  // background: red;
 }
 
 .todoWrapper {
@@ -48,9 +46,6 @@ html:focus {
       padding: 1.5rem 2rem;
     }
     background: rgba(50, 25, 50, 0.5);
-    // border-radius: $bigRadius;
-    // border-top-left-radius: $smallRadius;
-    // border-top-right-radius: $smallRadius;
     margin: 0;
     outline: none;
     color: $secondaryColor;
@@ -62,7 +57,6 @@ html:focus {
     }
   }
   &__todoFormField {
-    // background: red;
     display: flex;
     align-items: center;
     width: 90vw;
@@ -99,6 +93,7 @@ html:focus {
     &__Item {
       position: relative;
       display: flex;
+      flex-direction: column;
       background: $secondaryColor;
       background: $mainWhite;
       padding: 2rem 0.75rem 0.75rem 0.75rem;
@@ -135,7 +130,7 @@ html:focus {
     }
     &__Inner.completed {
       transition: 0.25s background ease-in-out;
-      background: rgba($spice4, 0.1);
+      background: rgba($completedColor, 0.1);
     }
     &__descriptionContainer {
       display: flex;
@@ -169,7 +164,6 @@ html:focus {
     &__infoContainer {
       padding: 0 0 0 0;
       display: flex;
-      // background: blue;
       justify-content: space-between;
       align-items: center;
     }
@@ -273,28 +267,13 @@ form {
     color: $secondaryColor;
   }
 }
+.MuiCheckbox-colorSecondary.Mui-checked {
+  outline: none;
+  border: none;
+  color: $completedColor !important;
+}
 
 // toastify
 .toastify-this {
   background: $secondaryColor;
-}
-
-.modalOutline {
-  border: 3px solid red;
-  z-index: 1;
-}
-.modal-backdrop.show {
-  z-index: 1001;
-}
-.modal-dialog {
-  z-index: 1000;
-}
-.modal.modalOutline.show {
-  z-index: 1000;
-  background: blue;
-  margin-top: 20vh;
-  height: 80vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }

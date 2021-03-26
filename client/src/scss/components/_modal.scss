@@ -1,12 +1,79 @@
 ////////////////////////////////////////////////////
 // UPLOADER ////////////////////////////////////////
 ////////////////////////////////////////////////////
-.modalOutline {
-  border: 1px solid red;
-}
-.modal-backdrop.show {
-  z-index: 0;
-}
 .modal.show {
   z-index: 2;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal {
+  opacity: 1;
+  z-index: 200;
+  // display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+}
+
+.modal-dialog {
+  z-index: 1000;
+  margin: 0 auto;
+  width: 90vw;
+  & .modal-content {
+    background: none;
+    & .todoList__Item {
+      margin-bottom: 0 !important;
+      padding-top: 1rem;
+      & .modal-header {
+        padding-top: 0;
+        padding-bottom: 0.5rem;
+        & h5 {
+          margin: 0;
+          padding: 0;
+          font-size: 1rem;
+          color: $secondaryColor;
+        }
+        & .todoList__descriptionContainer {
+          justify-content: flex-end;
+        }
+      }
+      & .todoList__Inner {
+        padding-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
+        & .todoList__textContainer {
+          display: flex;
+          & input {
+            min-width: 80%;
+            margin-right: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+  & .todoListContainer__todoFormField {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    & input {
+      min-width: 70%;
+    }
+  }
+}
+.modal.modalOutline.show {
+  background: rgba(0, 0, 0, 0.5);
+  margin-top: 0vh;
+  height: 100vh;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+.modal-backdrop.show {
+  z-index: -2;
+}
+.modal-open .todoListContainer__form {
+  z-index: -5;
 }

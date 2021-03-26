@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import EditTodo from "./EditTodo";
+import EditTodo2 from "./EditTodo2";
+// import EditTodo from "./EditTodo";
 import DeleteIcon from "@material-ui/icons/Delete";
 // import ToggleSwitch from "./ToggleSwitch";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -121,10 +122,11 @@ const ListTodos = ({ allTodos, setTodosChange, toggleComplete }) => {
                         </div>
 
                         <div className="buttonContainer">
-                          <EditTodo
+                          <EditTodo2
                             todo={todo}
                             setTodosChange={setTodosChange}
                           />
+
                           <button
                             aria-label="Delete"
                             onClick={() => deleteTodo(todo.todo_id)}

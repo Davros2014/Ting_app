@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import EditIcon from "@material-ui/icons/Edit";
 
 const EditTodo2 = ({ todo, setTodosChange }) => {
   // console.log("todoo in edit", todo);
@@ -11,6 +12,8 @@ const EditTodo2 = ({ todo, setTodosChange }) => {
       myHeaders.append("Content-Type", "application/json");
       myHeaders.append("jwt_token", localStorage.token);
       const body = { description };
+
+      console.log("body in handleUpdate", body);
       const updatedTodo = await fetch(
         `http://localhost:5000/dashboard/todos/${todo.todo_id}`,
         {
@@ -21,7 +24,7 @@ const EditTodo2 = ({ todo, setTodosChange }) => {
       );
       setTodosChange(true);
       console.log("updatedTodo response", updatedTodo);
-      // setDescription(updatedTodo);
+      setDescription("");
       // window.location = "/";
     } catch (err) {
       console.error(err.message);
@@ -32,60 +35,59 @@ const EditTodo2 = ({ todo, setTodosChange }) => {
   //   setDescription();
   // }, [setTodosChange]);
 
+  const capitalise = str =>
+    str.slice(0, 1).toUpperCase() + str.slice(1, str.length);
+
   return (
     <Fragment>
       <button
         type="button"
-        className="mainButton"
+        className="iconButton"
         data-toggle="modal"
         data-target={`#id${todo.todo_id}`}
       >
-        Edit
+        <EditIcon />
       </button>
       <div
-        className="modal "
+        className="modal modalOutline"
         id={`id${todo.todo_id}`}
         onClick={() => setDescription(todo.description)}
       >
-        <div className="modal-dialog modalOutline">
+        <div className="modal-dialog">
           <div className="modal-content">
-            <div className="modal-header">
-              <h4 className="modal-title">Edit Todo</h4>
-              <button
-                onClick={() => setDescription(todo.description)}
-                type="button"
-                className="close"
-                data-dismiss="modal"
-              >
-                &times;
-              </button>
-            </div>
-
-            <div className="modal-body">
-              <input
-                value={description}
-                type="text"
-                placeholder="Add task here"
-                className="todoForm__input form-control"
-                onChange={e => setDescription(e.target.value)}
-              />
-              <button
-                type="button"
-                data-dismiss="modal"
-                onClick={e => handleUpdate(e)}
-                className="todoForm__btn mainButton"
-              >
-                Update
-              </button>
-              <div className="modal-footer">
+            <div className="todoList__Item">
+              <div className="modal-header">
+                <h5 className="modal-title">Edit Todo</h5>
                 <button
-                  type="button"
-                  className="mainButton"
-                  data-dismiss="modal"
                   onClick={() => setDescription(todo.description)}
+                  type="button"
+                  className="close"
+                  data-dismiss="modal"
                 >
-                  Close
+                  &times;
                 </button>
+              </div>
+              <div className="todoList__Inner">
+                <p>
+                  <strong>Description</strong>
+                </p>
+                <div className="todoList__textContainer">
+                  <input
+                    value={capitalise(description)}
+                    type="text"
+                    placeholder="Update ting here"
+                    className="todoForm__input form-control"
+                    onChange={e => setDescription(e.target.value)}
+                  />
+                  <button
+                    type="button"
+                    data-dismiss="modal"
+                    onClick={e => handleUpdate(e)}
+                    className="todoForm__btn mainButton"
+                  >
+                    Update
+                  </button>
+                </div>
               </div>
             </div>
           </div>
