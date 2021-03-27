@@ -24,7 +24,7 @@ function App() {
   async function checkAuthenticated() {
     try {
       const response = await fetch(
-        "http://localhost:5000/authentication/verify",
+        "http://localhost:5000/api/authentication/verify",
         {
           method: "POST",
           headers: { jwt_token: localStorage.token }
