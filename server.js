@@ -13,8 +13,8 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "client/build")));
 
 //routes
-app.use("/dashboard", require("./routes/dashboard"));
-app.use("/authentication", require("./routes/jwtAuth"));
+app.use("api/dashboard", require("./routes/dashboard"));
+app.use("api/authentication", require("./routes/jwtAuth"));
 
 app.listen(port, () => {
     console.log(`Server is starting on port ${port}`);
