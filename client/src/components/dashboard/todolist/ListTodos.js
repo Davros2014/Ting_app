@@ -12,7 +12,7 @@ const ListTodos = ({ allTodos, setTodosChange, toggleComplete }) => {
   //deleting todos
   const deleteTodo = async id => {
     try {
-      await fetch(`http://localhost:5000/dashboard/todos/${id}`, {
+      await fetch(`http://localhost:5000/api/dashboard/todos/${id}`, {
         method: "DELETE",
         headers: { jwt_token: localStorage.token }
       });

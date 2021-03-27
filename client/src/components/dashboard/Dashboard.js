@@ -30,7 +30,7 @@ const Dashboard = ({ setAuth }) => {
       const body = { completed: !completedState };
       console.log("toggleComplete ? body", body);
       const response = await fetch(
-        `http://localhost:5000/dashboard/todos/completed/${id}`,
+        `http://localhost:5000/api/dashboard/todos/completed/${id}`,
         {
           method: "PUT",
           headers: myHeaders,
@@ -47,7 +47,7 @@ const Dashboard = ({ setAuth }) => {
 
   const getProfile = async () => {
     try {
-      const res = await fetch("http://localhost:5000/dashboard/", {
+      const res = await fetch("http://localhost:5000/api/dashboard/", {
         method: "GET",
         headers: { jwt_token: localStorage.token }
       });

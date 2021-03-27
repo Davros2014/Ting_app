@@ -15,7 +15,7 @@ const EditTodo2 = ({ todo, setTodosChange }) => {
 
       console.log("body in handleUpdate", body);
       const updatedTodo = await fetch(
-        `http://localhost:5000/dashboard/todos/${todo.todo_id}`,
+        `http://localhost:5000/api/dashboard/todos/${todo.todo_id}`,
         {
           method: "PUT",
           headers: myHeaders,
