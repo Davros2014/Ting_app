@@ -4,8 +4,8 @@
 html:focus {
   outline: none;
 }
-.noTodosImage {
-  width: 100%;
+.noTodosImg {
+  width: clamp(100%, 40vw, 80%);
 }
 
 .todoWrapper {
