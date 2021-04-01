@@ -30,7 +30,7 @@ CREATE TABLE todos (
 -- completed BOOLEAN NOT NULL,
 
 -- TESTING --
--- INSERT INTO users (user_firstname, user_lastname, user_email, user_password) VALUES ('jacob', 'hoover', 'jacoby213@gmail.com', 'kthl8822');
+-- INSERT INTO users (user_firstname, user_lastname, user_email, user_password) VALUES ('viola', 'voltaire', 'viola@yahoo.com', '1234');
 -- INSERT INTO todos (user_id, description, completed) VALUES ('3f3d5550-9c84-4b55-b15d-a5be427c05ca', 'Wash the cat', false);
 
 -- INSERT INTO users (user_firstname, user_lastname, user_email, user_password) VALUES ('jobe', 'hoover', 'jacoby213@gmail.com', 'kthl8822');

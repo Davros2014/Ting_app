@@ -69,7 +69,7 @@ const ListTodos = ({ allTodos, setTodosChange, toggleComplete }) => {
     str.slice(0, 1).toUpperCase() + str.slice(1, str.length);
   return (
     <>
-      {todos.length >= 1 ? (
+      {todos.length !== 0 ? (
         <ul className="todoList">
           {todos.length !== 0 &&
             todos[0].todo_id !== null &&
@@ -143,11 +143,7 @@ const ListTodos = ({ allTodos, setTodosChange, toggleComplete }) => {
             ))}
         </ul>
       ) : (
-        <img
-          className="noTodosImage"
-          src="/img/todo-list.png"
-          alt="no image?"
-        />
+        <img className="noTodosImg" src="/img/todo-list.png" alt="noTodos" />
       )}
     </>
   );
