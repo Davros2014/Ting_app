@@ -27,7 +27,10 @@ function App() {
         "http://localhost:5000/api/authentication/verify",
         {
           method: "POST",
-          headers: { jwt_token: localStorage.token }
+          headers: {
+            jwt_token: localStorage.token,
+            "Cross-Origin-Opener-Policy": "same-origin"
+          }
         }
       );
 
