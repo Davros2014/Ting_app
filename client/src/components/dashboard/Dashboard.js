@@ -21,7 +21,8 @@ const Dashboard = ({ setAuth }) => {
       const myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
       myHeaders.append("jwt_token", localStorage.token);
-
+      myHeaders.append("Cross-Origin-Embedder-Policy", "require-corp");
+      myHeaders.append("Cross-Origin-Opener-Policy", "same-origin");
       // setAllTodos(
       //   allTodos.map(todo =>
       //     todo.todo_id === id ? { ...todo, completed: !todo.completed } : todo
