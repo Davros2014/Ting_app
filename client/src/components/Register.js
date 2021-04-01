@@ -24,7 +24,10 @@ const Register = ({ setAuth }) => {
         "http://localhost:5000/api/authentication/register",
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            "Cross-Origin-Opener-Policy": "same-origin"
+          },
           body: JSON.stringify(body)
         }
       );

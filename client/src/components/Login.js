@@ -25,7 +25,10 @@ const Login = ({ setAuth }) => {
         "http://localhost:5000/api/authentication/login",
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            "Cross-Origin-Opener-Policy": "same-origin"
+          },
           body: JSON.stringify(body)
         }
       );
