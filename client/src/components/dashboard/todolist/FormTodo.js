@@ -13,7 +13,6 @@ const FormTodo = ({ setTodosChange }) => {
 
         const created_at = new Date();
         const body = { description, created_at };
-        console.log("body in handleSubmit", body);
         const response = await fetch(
           "http://localhost:5000/api/dashboard/todos",
           {
@@ -23,7 +22,6 @@ const FormTodo = ({ setTodosChange }) => {
           }
         );
         const parseResponse = await response.json();
-        console.log("parseResponse", parseResponse);
         setTodosChange(true);
         setDescription("");
       } catch (err) {

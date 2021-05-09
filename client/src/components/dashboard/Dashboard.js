@@ -16,7 +16,6 @@ const Dashboard = ({ setAuth }) => {
   //   setCompleted(prevState => !completed);
   // };
   const toggleComplete = async (id, completedState) => {
-    console.log("completedState in toggleComplete", completedState);
     try {
       const myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
@@ -27,7 +26,6 @@ const Dashboard = ({ setAuth }) => {
       //   )
       // );
       const body = { completed: !completedState };
-      console.log("toggleComplete ? body", body);
       const response = await fetch(
         `http://localhost:5000/api/dashboard/todos/completed/${id}`,
         {
@@ -37,7 +35,6 @@ const Dashboard = ({ setAuth }) => {
         }
       );
       const parseResponse = await response.json();
-      console.log("parseResponse", parseResponse);
       setTodosChange(true);
     } catch (err) {
       console.error(err.message);
@@ -51,7 +48,6 @@ const Dashboard = ({ setAuth }) => {
         headers: { jwt_token: localStorage.token }
       });
       const parseData = await res.json();
-      // console.log("parseData > getProfile", parseData);
       setAllTodos(parseData);
       if (parseData[0].user_firstname)
         setFirstname(parseData[0].user_firstname);

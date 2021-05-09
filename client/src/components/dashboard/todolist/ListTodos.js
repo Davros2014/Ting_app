@@ -16,7 +16,6 @@ const ListTodos = ({ allTodos, setTodosChange, toggleComplete }) => {
         method: "DELETE",
         headers: { jwt_token: localStorage.token }
       });
-      // console.log("delete", deleteTodo);
       setTodos(
         todos.filter(todo => {
           return todo.todo_id !== id;
@@ -36,8 +35,6 @@ const ListTodos = ({ allTodos, setTodosChange, toggleComplete }) => {
   //     .slice()
   //     .sort((a, b) => newDate(b.created_at) - newDate(a.created_at));
   // };
-
-  // console.log("mostRecentTodos", mostRecentTodos(todos));
 
   useEffect(() => {
     setTodos(allTodos);
@@ -61,7 +58,6 @@ const ListTodos = ({ allTodos, setTodosChange, toggleComplete }) => {
   };
 
   const toggleCompletion = (id, completed) => {
-    // console.log("id, completed - in toggleCompletion", id, completed);
     toggleComplete(id, completed);
   };
 

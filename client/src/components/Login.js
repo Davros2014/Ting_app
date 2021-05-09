@@ -15,8 +15,6 @@ const Login = ({ setAuth }) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
 
   const onSubmitForm = async e => {
-    console.log("submit login data");
-
     e.preventDefault();
 
     try {

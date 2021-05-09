@@ -2,7 +2,6 @@ import React, { Fragment, useState } from "react";
 import EditIcon from "@material-ui/icons/Edit";
 
 const EditTodo = ({ todo, setTodosChange }) => {
-  // console.log("todoo in edit", todo);
   const [description, setDescription] = useState(todo.description);
 
   const handleUpdate = async e => {
@@ -13,7 +12,6 @@ const EditTodo = ({ todo, setTodosChange }) => {
       myHeaders.append("jwt_token", localStorage.token);
       const body = { description };
 
-      console.log("body in handleUpdate", body);
       const updatedTodo = await fetch(
         `http://localhost:5000/api/dashboard/todos/${todo.todo_id}`,
         {
@@ -23,7 +21,6 @@ const EditTodo = ({ todo, setTodosChange }) => {
         }
       );
       setTodosChange(true);
-      console.log("updatedTodo response", updatedTodo);
       // setDescription(updatedTodo);
       // window.location = "/";
     } catch (err) {
