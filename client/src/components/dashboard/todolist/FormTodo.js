@@ -10,6 +10,10 @@ const FormTodo = ({ setTodosChange }) => {
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
         myHeaders.append("jwt_token", localStorage.token);
+        myHeaders.append(
+          "Access-Control-Allow-Origin",
+          "https://ting-app.herokuapp.com"
+        );
 
         const created_at = new Date();
         const body = { description, created_at };

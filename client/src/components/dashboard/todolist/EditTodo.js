@@ -10,6 +10,11 @@ const EditTodo = ({ todo, setTodosChange }) => {
       const myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
       myHeaders.append("jwt_token", localStorage.token);
+      myHeaders.append(
+        "Access-Control-Allow-Origin",
+        "https://ting-app.herokuapp.com"
+      );
+
       const body = { description };
 
       const updatedTodo = await fetch(

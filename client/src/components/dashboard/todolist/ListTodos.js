@@ -11,10 +11,17 @@ const ListTodos = ({ allTodos, setTodosChange, toggleComplete }) => {
 
   //deleting todos
   const deleteTodo = async id => {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("jwt_token", localStorage.token);
+    myHeaders.append(
+      "Access-Control-Allow-Origin",
+      "https://ting-app.herokuapp.com"
+    );
     try {
       await fetch(`http://localhost:5000/api/dashboard/todos/${id}`, {
         method: "DELETE",
-        headers: { jwt_token: localStorage.token }
+        headers: myHeaders
       });
       setTodos(
         todos.filter(todo => {
