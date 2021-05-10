@@ -26,8 +26,7 @@ const Register = ({ setAuth }) => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Cross-Origin-Opener-Policy": "same-origin",
-            "Access-Control-Allow-Origin": "https://ting-app.herokuapp.com"
+            "Cross-Origin-Opener-Policy": "same-origin"
           },
           body: JSON.stringify(body)
         }

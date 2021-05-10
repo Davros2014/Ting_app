@@ -20,10 +20,7 @@ const Dashboard = ({ setAuth }) => {
       const myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
       myHeaders.append("jwt_token", localStorage.token);
-      myHeaders.append(
-        "Access-Control-Allow-Origin",
-        "https://ting-app.herokuapp.com"
-      );
+      console.log("myHeaders", myHeaders);
       // setAllTodos(
       //   allTodos.map(todo =>
       //     todo.todo_id === id ? { ...todo, completed: !todo.completed } : todo

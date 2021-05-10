@@ -20,15 +20,11 @@ router.get("/", authorize, async (req, res) => {
 //create todo
 router.post("/todos", authorize, async (req, res) => {
     try {
-        console.log("new todo", req.body);
         const { description } = req.body;
         const newTodo = await db.query(
             "INSERT INTO todos (user_id, description) VALUES ($1, $2) RETURNING *",
             [req.user.id, description]
         );
-        // res.json(newTodo);
-        console.log("New Todo", newTodo.rows[0]);
-
         res.json(newTodo.rows[0]);
     } catch (err) {
         console.error(err.message);
@@ -58,10 +54,7 @@ router.put("/todos/:id", authorize, async (req, res) => {
 router.put("/todos/completed/:id", authorize, async (req, res) => {
     try {
         const { id } = req.params;
-        console.log("id");
-        console.log("req.body", req.body);
         const { completed } = req.body;
-        console.log("completed", completed);
         const updateCompletion = await db.query(
             "UPDATE todos SET completed = $1 WHERE todo_id = $2 AND user_id = $3 RETURNING *",
             [completed, id, req.user.id]

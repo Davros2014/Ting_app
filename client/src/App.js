@@ -29,8 +29,7 @@ function App() {
           method: "POST",
           headers: {
             jwt_token: localStorage.token,
-            "Cross-Origin-Opener-Policy": "same-origin",
-            "Access-Control-Allow-Origin": "https://ting-app.herokuapp.com"
+            "Cross-Origin-Opener-Policy": "same-origin"
           }
         }
       );

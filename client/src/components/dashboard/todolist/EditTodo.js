@@ -10,13 +10,8 @@ const EditTodo = ({ todo, setTodosChange }) => {
       const myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
       myHeaders.append("jwt_token", localStorage.token);
-      myHeaders.append(
-        "Access-Control-Allow-Origin",
-        "https://ting-app.herokuapp.com"
-      );
 
       const body = { description };
-
       const updatedTodo = await fetch(
         `http://localhost:5000/api/dashboard/todos/${todo.todo_id}`,
         {
@@ -26,7 +21,7 @@ const EditTodo = ({ todo, setTodosChange }) => {
         }
       );
       setTodosChange(true);
-      // setDescription(updatedTodo);
+      setDescription("");
       // window.location = "/";
     } catch (err) {
       console.error(err.message);
@@ -36,6 +31,9 @@ const EditTodo = ({ todo, setTodosChange }) => {
   // useEffect(() => {
   //   setDescription();
   // }, [setTodosChange]);
+
+  const capitalise = str =>
+    str.slice(0, 1).toUpperCase() + str.slice(1, str.length);
 
   return (
     <Fragment>
@@ -52,44 +50,41 @@ const EditTodo = ({ todo, setTodosChange }) => {
         id={`id${todo.todo_id}`}
         onClick={() => setDescription(todo.description)}
       >
-        <div className="modal-dialog ">
+        <div className="modal-dialog">
           <div className="modal-content">
-            <div className="modal-header">
-              <h4 className="modal-title">Edit Todo</h4>
-              <button
-                onClick={() => setDescription(todo.description)}
-                type="button"
-                className="close"
-                data-dismiss="modal"
-              >
-                &times;
-              </button>
-            </div>
-            <div className="modal-body">
-              <input
-                value={description}
-                type="text"
-                placeholder="Update ting here"
-                className="todoForm__input form-control"
-                onChange={e => setDescription(e.target.value)}
-              />
-              <div className="modal-footer">
+            <div className="todoList__Item">
+              <div className="modal-header">
+                <h5 className="modal-title">Edit Todo</h5>
                 <button
-                  type="button"
-                  data-dismiss="modal"
-                  onClick={e => handleUpdate(e)}
-                  className="todoForm__btn mainButton"
-                >
-                  Update
-                </button>
-                <button
-                  type="button"
-                  className="mainButton"
-                  data-dismiss="modal"
                   onClick={() => setDescription(todo.description)}
+                  type="button"
+                  className="close"
+                  data-dismiss="modal"
                 >
-                  Close
+                  &times;
                 </button>
+              </div>
+              <div className="todoList__Inner">
+                <p>
+                  <strong>Description</strong>
+                </p>
+                <div className="todoList__textContainer">
+                  <input
+                    value={capitalise(description)}
+                    type="text"
+                    placeholder="Update ting here"
+                    className="todoForm__input form-control"
+                    onChange={e => setDescription(e.target.value)}
+                  />
+                  <button
+                    type="button"
+                    data-dismiss="modal"
+                    onClick={e => handleUpdate(e)}
+                    className="todoForm__btn mainButton"
+                  >
+                    Update
+                  </button>
+                </div>
               </div>
             </div>
           </div>

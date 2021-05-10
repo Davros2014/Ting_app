@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import EditTodo2 from "./EditTodo2";
+import EditTodo from "./EditTodo";
 // import EditTodo from "./EditTodo";
 import DeleteIcon from "@material-ui/icons/Delete";
 // import ToggleSwitch from "./ToggleSwitch";
@@ -14,10 +14,7 @@ const ListTodos = ({ allTodos, setTodosChange, toggleComplete }) => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("jwt_token", localStorage.token);
-    myHeaders.append(
-      "Access-Control-Allow-Origin",
-      "https://ting-app.herokuapp.com"
-    );
+
     try {
       await fetch(`http://localhost:5000/api/dashboard/todos/${id}`, {
         method: "DELETE",
@@ -125,7 +122,7 @@ const ListTodos = ({ allTodos, setTodosChange, toggleComplete }) => {
                         </div>
 
                         <div className="buttonContainer">
-                          <EditTodo2
+                          <EditTodo
                             todo={todo}
                             setTodosChange={setTodosChange}
                           />

@@ -6,13 +6,26 @@ require("dotenv").config();
 
 const port = process.env.PORT || 5000;
 
-console.log("process.env.PORT", process.env.PORT);
+let corsOptions = {
+    origin: ["http://localhost:3000", "https://ting-app.herokuapp.com/"],
+    optionsSuccessStatus: 200,
+    credentials: true
+};
+
 //middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // app.use(express.static("./public"));
 
+app.get("/products/:id", function(req, res, next) {
+    res.json({ msg: "This is CORS-enabled for only example.com." });
+});
+
+// app.use((req, res, next) => {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     next();
+// });
 app.use(express.static(path.join(__dirname, "client/build")));
 
 //routes

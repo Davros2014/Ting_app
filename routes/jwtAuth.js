@@ -26,7 +26,6 @@ router.post("/register", validInfo, async (req, res) => {
             "INSERT INTO users (user_firstname, user_lastname, user_email, user_password) VALUES ($1, $2, $3, $4) RETURNING *",
             [firstname, lastname, email, bcryptPassword]
         );
-        // console.log("newUser.rows[0].user_id", newUser.rows[0].user_id);
         const jwtToken = jwtGenerator(newUser.rows[0].user_id);
 
         return res.json({ jwtToken });
