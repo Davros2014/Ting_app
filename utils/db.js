@@ -17,5 +17,4 @@ const dbUrl =
     "postgres:postgres:postgres@localhost:5432/authtodo";
 
 const db = spicedPg(dbUrl);
-
 module.exports = db;
