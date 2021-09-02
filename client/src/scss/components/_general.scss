@@ -18,7 +18,9 @@ code {
 }
 
 // forms inputs etc
-*:focus {
+*:focus,
+input:focus,
+* {
   outline: none;
 }
 button:focus {

@@ -12,9 +12,6 @@ const Dashboard = ({ setAuth }) => {
   const [allTodos, setAllTodos] = useState([]);
   const [todosChange, setTodosChange] = useState(false);
 
-  // const toggleComplete = () => {
-  //   setCompleted(prevState => !completed);
-  // };
   const toggleComplete = async (id, completedState) => {
     try {
       const myHeaders = new Headers();
@@ -27,6 +24,7 @@ const Dashboard = ({ setAuth }) => {
       //   )
       // );
       const body = { completed: !completedState };
+      console.log("bodies...and not an animal ", body);
       const response = await fetch(
         `http://localhost:5000/api/dashboard/todos/completed/${id}`,
         {
@@ -62,7 +60,6 @@ const Dashboard = ({ setAuth }) => {
     try {
       localStorage.removeItem("token");
       setAuth(false);
-      // toast.success("Logout successfully");
       toast.success("Logout successfully", {
         position: toast.POSITION.BOTTOM_LEFT,
         className: "toastify-this"

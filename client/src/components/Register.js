@@ -12,8 +12,13 @@ const Register = ({ setAuth }) => {
 
   const { email, password, firstname, lastname } = inputs;
 
-  const onChange = e =>
-    setInputs({ ...inputs, [e.target.name]: e.target.value });
+  const onChange = e => {
+    let trimmedValue = e.target.value.trim();
+    if (trimmedValue === "firstname" || trimmedValue === "lastname") {
+      console.log("first or last, who knows");
+    }
+    setInputs({ ...inputs, [e.target.name]: trimmedValue });
+  };
 
   const onSubmitForm = async e => {
     e.preventDefault();

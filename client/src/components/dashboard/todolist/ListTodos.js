@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import EditTodo from "./EditTodo";
-// import EditTodo from "./EditTodo";
 import DeleteIcon from "@material-ui/icons/Delete";
-// import ToggleSwitch from "./ToggleSwitch";
 import Checkbox from "@material-ui/core/Checkbox";
 
 //listing todos
@@ -14,7 +12,6 @@ const ListTodos = ({ allTodos, setTodosChange, toggleComplete }) => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("jwt_token", localStorage.token);
-
     try {
       await fetch(`http://localhost:5000/api/dashboard/todos/${id}`, {
         method: "DELETE",
@@ -43,11 +40,9 @@ const ListTodos = ({ allTodos, setTodosChange, toggleComplete }) => {
   useEffect(() => {
     setTodos(allTodos);
   }, [allTodos]);
-
   const createdDate = date => {
     let newDate = new Date(date);
     const options = {
-      // weekday: "long",
       year: "numeric",
       month: "short",
       day: "numeric"
@@ -60,16 +55,14 @@ const ListTodos = ({ allTodos, setTodosChange, toggleComplete }) => {
     let creationTime = newDate.toLocaleTimeString();
     return creationTime;
   };
-
   const toggleCompletion = (id, completed) => {
     toggleComplete(id, completed);
   };
-
   const capitalise = str =>
     str.slice(0, 1).toUpperCase() + str.slice(1, str.length);
   return (
     <>
-      {todos.length !== 0 ? (
+      {allTodos && todos && todos.length > 0 ? (
         <ul className="todoList">
           {todos.length !== 0 &&
             todos[0].todo_id !== null &&
@@ -120,7 +113,6 @@ const ListTodos = ({ allTodos, setTodosChange, toggleComplete }) => {
                             {`${todo.completed ? "Completed" : "In progress"}`}
                           </label>
                         </div>
-
                         <div className="buttonContainer">
                           <EditTodo
                             todo={todo}
@@ -143,7 +135,13 @@ const ListTodos = ({ allTodos, setTodosChange, toggleComplete }) => {
             ))}
         </ul>
       ) : (
-        <img className="noTodosImg" src="/img/todo-list.png" alt="noTodos" />
+        <img
+          className="noTodosImg"
+          width="20vw"
+          height="100%"
+          src="/img/todo-list.svg"
+          alt="noTodos"
+        />
       )}
     </>
   );

@@ -11,8 +11,10 @@ const Login = ({ setAuth }) => {
 
   const { email, password } = inputs;
 
-  const onChange = e =>
-    setInputs({ ...inputs, [e.target.name]: e.target.value });
+  const onChange = e => {
+    let trimmedValue = e.target.value.trim();
+    setInputs({ ...inputs, [e.target.name]: trimmedValue });
+  };
 
   const onSubmitForm = async e => {
     e.preventDefault();
