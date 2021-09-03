@@ -16,6 +16,9 @@ router.get("/", authorize, async (req, res) => {
         res.status(500).send("Server error");
     }
 });
+router.get("/dashboard", (req, res) => {
+    res.redirect("/");
+});
 
 //create todo
 router.post("/todos", authorize, async (req, res) => {
@@ -36,7 +39,6 @@ router.put("/todos/:id", authorize, async (req, res) => {
     try {
         const { id } = req.params;
         const { description } = req.body;
-
         const updateTodo = await db.query(
             "UPDATE todos SET description = $1 WHERE todo_id = $2 AND user_id = $3 RETURNING *",
             [description, id, req.user.id]
@@ -86,5 +88,3 @@ router.delete("/todos/:id", authorize, async (req, res) => {
 });
 
 module.exports = router;
-
-// SELECT * FROM users LEFT JOIN todos ON users.user_id = todos.user_id WHERE users.user.id = '69bdeae9-65de-4f13-ac6c-8164b679a747';

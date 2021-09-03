@@ -1,15 +1,3 @@
-// const { Pool } = require("pg");
-//
-// const pool = new Pool({
-//     host: "localhost",
-//     user: "postgres",
-//     password: "VioCorn2021",
-//     port: 5432,
-//     database: "authtodo"
-// });
-//
-// module.exports = pool;
-
 var spicedPg = require("spiced-pg");
 
 const dbUrl =
