@@ -13,7 +13,7 @@ const ListTodos = ({ allTodos, setTodosChange, toggleComplete }) => {
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("jwt_token", localStorage.token);
     try {
-      await fetch(`http://localhost:5000/api/dashboard/todos/${id}`, {
+      await fetch(`/api/dashboard/todos/${id}`, {
         method: "DELETE",
         headers: myHeaders
       });

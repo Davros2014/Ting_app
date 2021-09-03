@@ -14,7 +14,7 @@ const FormTodo = ({ setTodosChange }) => {
         const created_at = new Date();
         const body = { description, created_at };
         const response = await fetch(
-          "http://localhost:5000/api/dashboard/todos",
+          "/api/dashboard/todos",
           {
             method: "POST",
             headers: myHeaders,

@@ -21,17 +21,14 @@ const Login = ({ setAuth }) => {
 
     try {
       const body = { email, password };
-      const response = await fetch(
-        "http://localhost:5000/api/authentication/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Cross-Origin-Opener-Policy": "same-origin"
-          },
-          body: JSON.stringify(body)
-        }
-      );
+      const response = await fetch("/api/authentication/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Cross-Origin-Opener-Policy": "same-origin"
+        },
+        body: JSON.stringify(body)
+      });
 
       const parseRes = await response.json();
       if (parseRes.jwtToken) {

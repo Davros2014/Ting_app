@@ -25,14 +25,11 @@ const Dashboard = ({ setAuth }) => {
       // );
       const body = { completed: !completedState };
       console.log("bodies...and not an animal ", body);
-      const response = await fetch(
-        `http://localhost:5000/api/dashboard/todos/completed/${id}`,
-        {
-          method: "PUT",
-          headers: myHeaders,
-          body: JSON.stringify(body)
-        }
-      );
+      const response = await fetch(`/api/dashboard/todos/completed/${id}`, {
+        method: "PUT",
+        headers: myHeaders,
+        body: JSON.stringify(body)
+      });
       const parseResponse = await response.json();
       setTodosChange(true);
     } catch (err) {
@@ -42,7 +39,7 @@ const Dashboard = ({ setAuth }) => {
 
   const getProfile = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/dashboard/", {
+      const res = await fetch("/api/dashboard/", {
         method: "GET",
         headers: { jwt_token: localStorage.token }
       });

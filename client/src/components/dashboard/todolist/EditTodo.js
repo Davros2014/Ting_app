@@ -13,7 +13,7 @@ const EditTodo = ({ todo, setTodosChange }) => {
 
       const body = { description };
       const updatedTodo = await fetch(
-        `http://localhost:5000/api/dashboard/todos/${todo.todo_id}`,
+        `/api/dashboard/todos/${todo.todo_id}`,
         {
           method: "PUT",
           headers: myHeaders,
