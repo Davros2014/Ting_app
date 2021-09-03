@@ -4,7 +4,7 @@ const cors = require("cors");
 const path = require("path");
 require("dotenv").config();
 
-const port = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 
 //cors options
 var allowedOrigins = [
@@ -17,15 +17,20 @@ let corsOptions = {
     credentials: true
 };
 
-app.use(express.json());
 app.use(cors(corsOptions));
+app.use(express.json());
 
-app.use(express.static(path.join(__dirname, "client/build")));
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "client/build")));
+}
+
+// app.use(express.static(path.join(__dirname, "client/build")));
+console.log("path.join(__dirname)", path.join(__dirname, "client/build"));
 
 //routes
 app.use("/api/dashboard", require("./routes/dashboard"));
 app.use("/api/authentication", require("./routes/jwtAuth"));
 
-app.listen(port, () => {
-    console.log(`Server is starting on port ${port}`);
+app.listen(PORT, () => {
+    console.log(`Server is starting on port ${PORT}`);
 });
