@@ -13,14 +13,11 @@ const FormTodo = ({ setTodosChange }) => {
 
         const created_at = new Date();
         const body = { description, created_at };
-        const response = await fetch(
-          "/api/dashboard/todos",
-          {
-            method: "POST",
-            headers: myHeaders,
-            body: JSON.stringify(body)
-          }
-        );
+        const response = await fetch("/api/dashboard/todos", {
+          method: "POST",
+          headers: myHeaders,
+          body: JSON.stringify(body)
+        });
         const parseResponse = await response.json();
         setTodosChange(true);
         setDescription("");

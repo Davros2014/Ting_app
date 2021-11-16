@@ -28,8 +28,9 @@ html:focus {
   align-items: flex-start;
   z-index: 0;
   width: 90vw;
-  height: 100%;
-
+  height: 80vh;
+  // background: blue;
+  overflow: scroll;
   @include minMq("900px") {
     width: 70vw;
   }

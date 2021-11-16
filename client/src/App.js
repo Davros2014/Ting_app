@@ -13,6 +13,7 @@ import { toast } from "react-toastify";
 
 //components
 
+import AppContainer from "./components/AppContainer";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Dashboard from "./components/dashboard/Dashboard";
@@ -33,7 +34,6 @@ function App() {
           }
         }
       );
-
       const parseRes = await response.json();
       parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
     } catch (err) {
@@ -53,7 +53,7 @@ function App() {
 
   return (
     <Router>
-      <div className="appContainer">
+      <AppContainer>
         <Switch>
           <Route
             exact
@@ -101,7 +101,7 @@ function App() {
             }
           />
         </Switch>
-      </div>
+      </AppContainer>
     </Router>
   );
 }

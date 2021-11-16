@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import AuthContainer from "./AuthContainer";
 
 import { toast } from "react-toastify";
 
@@ -8,7 +9,6 @@ const Login = ({ setAuth }) => {
     email: "",
     password: ""
   });
-
   const { email, password } = inputs;
 
   const onChange = e => {
@@ -18,7 +18,6 @@ const Login = ({ setAuth }) => {
 
   const onSubmitForm = async e => {
     e.preventDefault();
-
     try {
       const body = { email, password };
       const response = await fetch("/api/authentication/login", {
@@ -29,7 +28,6 @@ const Login = ({ setAuth }) => {
         },
         body: JSON.stringify(body)
       });
-
       const parseRes = await response.json();
       if (parseRes.jwtToken) {
         localStorage.setItem("token", parseRes.jwtToken);
@@ -45,37 +43,35 @@ const Login = ({ setAuth }) => {
   };
 
   return (
-    <div className="authWrapper">
-      <div className="authContainer">
-        <h5 className="subHeaderSmall">Login</h5>
-        <p>
-          Not a member yet? Register
-          <Link className="link" to="/register">
-            {" "}
-            here
-          </Link>
-        </p>
-        <form onSubmit={onSubmitForm}>
-          <input
-            type="text"
-            name="email"
-            placeholder="email"
-            value={email}
-            onChange={e => onChange(e)}
-            className="form-control my-3"
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={password}
-            onChange={e => onChange(e)}
-            className="form-control my-3"
-          />
-          <button className="submitButton">Submit</button>
-        </form>
-      </div>
-    </div>
+    <AuthContainer>
+      <h5 className="subHeaderSmall">Login</h5>
+      <p>
+        Not a member yet? Register
+        <Link className="link" to="/register">
+          {" "}
+          here
+        </Link>
+      </p>
+      <form onSubmit={onSubmitForm}>
+        <input
+          type="text"
+          name="email"
+          placeholder="email"
+          value={email}
+          onChange={e => onChange(e)}
+          className="form-control my-3"
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={password}
+          onChange={e => onChange(e)}
+          className="form-control my-3"
+        />
+        <button className="submitButton">Submit</button>
+      </form>
+    </AuthContainer>
   );
 };
 

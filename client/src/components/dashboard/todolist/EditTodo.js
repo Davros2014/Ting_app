@@ -12,14 +12,11 @@ const EditTodo = ({ todo, setTodosChange }) => {
       myHeaders.append("jwt_token", localStorage.token);
 
       const body = { description };
-      const updatedTodo = await fetch(
-        `/api/dashboard/todos/${todo.todo_id}`,
-        {
-          method: "PUT",
-          headers: myHeaders,
-          body: JSON.stringify(body)
-        }
-      );
+      const updatedTodo = await fetch(`/api/dashboard/todos/${todo.todo_id}`, {
+        method: "PUT",
+        headers: myHeaders,
+        body: JSON.stringify(body)
+      });
       setTodosChange(true);
       setDescription("");
       // window.location = "/";
@@ -27,10 +24,6 @@ const EditTodo = ({ todo, setTodosChange }) => {
       console.error(err.message);
     }
   };
-
-  // useEffect(() => {
-  //   setDescription();
-  // }, [setTodosChange]);
 
   const capitalise = str =>
     str.slice(0, 1).toUpperCase() + str.slice(1, str.length);
@@ -95,3 +88,15 @@ const EditTodo = ({ todo, setTodosChange }) => {
 };
 
 export default EditTodo;
+
+// import {MainBtn} from "../../buttons/mainBtn/mainBtn.style"
+//
+//
+// <MainBtn
+//   type="button"
+//   className="iconButton"
+//   datatoggle="modal"
+//   datatarget={`#id${todo.todo_id}`}
+// >
+//   <EditIcon />
+// </MainBtn>

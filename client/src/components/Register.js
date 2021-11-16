@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import AuthContainer from "./AuthContainer";
 
 const Register = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
@@ -14,9 +15,6 @@ const Register = ({ setAuth }) => {
 
   const onChange = e => {
     let trimmedValue = e.target.value.trim();
-    if (trimmedValue === "firstname" || trimmedValue === "lastname") {
-      console.log("first or last, who knows");
-    }
     setInputs({ ...inputs, [e.target.name]: trimmedValue });
   };
 
@@ -47,55 +45,55 @@ const Register = ({ setAuth }) => {
       console.error(err.message);
     }
   };
+  const capitalise = str =>
+    str.slice(0, 1).toUpperCase() + str.slice(1, str.length);
 
   return (
-    <div className="authWrapper">
-      <div className="authContainer">
-        <h5 className="subHeaderSmall">Register here</h5>
-        <p>
-          Already a member, log back in
-          <Link className="link" to="/login">
-            {" "}
-            here
-          </Link>
-        </p>
-        <form onSubmit={onSubmitForm}>
-          <input
-            type="text"
-            name="email"
-            value={email}
-            placeholder="Email"
-            onChange={e => onChange(e)}
-            className="form-control my-3"
-          />
-          <input
-            type="password"
-            name="password"
-            value={password}
-            placeholder="Password"
-            onChange={e => onChange(e)}
-            className="form-control my-3"
-          />
-          <input
-            type="text"
-            name="firstname"
-            value={firstname}
-            placeholder="First Name"
-            onChange={e => onChange(e)}
-            className="form-control my-3"
-          />
-          <input
-            type="text"
-            name="lastname"
-            value={lastname}
-            placeholder="Last Name"
-            onChange={e => onChange(e)}
-            className="form-control my-3"
-          />
-          <button className="submitButton">Submit</button>
-        </form>
-      </div>
-    </div>
+    <AuthContainer>
+      <h5 className="subHeaderSmall">Register here</h5>
+      <p>
+        Already a member, log back in
+        <Link className="link" to="/login">
+          {" "}
+          here
+        </Link>
+      </p>
+      <form onSubmit={onSubmitForm}>
+        <input
+          type="text"
+          name="email"
+          value={email}
+          placeholder="Email"
+          onChange={e => onChange(e)}
+          className="form-control my-3"
+        />
+        <input
+          type="password"
+          name="password"
+          value={password}
+          placeholder="Password"
+          onChange={e => onChange(e)}
+          className="form-control my-3"
+        />
+        <input
+          type="text"
+          name="firstname"
+          value={capitalise(firstname)}
+          placeholder="First Name"
+          onChange={e => onChange(e)}
+          className="form-control my-3"
+        />
+        <input
+          type="text"
+          name="lastname"
+          value={capitalise(lastname)}
+          placeholder="Last Name"
+          onChange={e => onChange(e)}
+          className="form-control my-3"
+        />
+        <button className="submitButton">Submit</button>
+      </form>
+    </AuthContainer>
   );
 };
 
